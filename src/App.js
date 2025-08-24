@@ -1,13 +1,12 @@
-import ArticleDetail from "./components/ArticleDetail";
-import ArticlesList from "./components/ArticlesList";
+import LandingPage from "./components/LandingPage";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 function App() {
   return (
     <div className="App">
       <Router>
       <Routes>
-        <Route path="/" element={<ArticlesList />} />
-        <Route path="/article/:id" element={<ArticleDetail />} />
+  <Route path="/" element={<LandingPage />} />
       </Routes>
     </Router>
     </div>
