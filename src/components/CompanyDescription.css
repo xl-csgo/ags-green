@@ -1,0 +1,27 @@
+.company-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-top: 5vh;
+}
+
+.rhombus {
+    display: block;
+}
+
+.company-description p {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 2.5em;
+    line-height: 1.4;
+    color: #000;
+    font-weight: 600;
+    text-align: center;
+    background: linear-gradient(110deg, #000000 21%, #FF9A24 74%);
+    background-clip: text;
+    -webkit-background-clip: text; /* For Safari/Chrome compatibility */
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}

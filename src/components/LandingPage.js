@@ -3,6 +3,7 @@ import './LandingPage.css';
 import HeroSection from './HeroSection';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import bg from '../assets/bg.png';
+import CompanyDescription from './CompanyDescription';
 
 const LandingPage = () => {
 	const logo = <Logo width={56} height={56} />;
@@ -11,6 +12,7 @@ const LandingPage = () => {
 	return (
 		<div className="landing-page">
 			<HeroSection logo={logo} background={background} />
+			<CompanyDescription />
 		</div>
 	);
 };
