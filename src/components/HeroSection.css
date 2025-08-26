@@ -81,7 +81,25 @@
   font-size: 1.2rem;
   text-decoration: none;
   box-shadow: 0 5px 20px 0 rgba(5,138,255,0.36);
-  transition: background 0.2s;
+  transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.hero-btn:hover,
+.hero-btn:focus {
+  /* slightly larger and brighter shadow + small lift */
+  box-shadow: 0 12px 36px 0 rgba(5,138,255,0.5);
+  transform: translateY(-3px);
+}
+
+.hero-btn:active {
+  /* push down slightly when clicking */
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px 0 rgba(5,138,255,0.45);
+}
+
+.hero-btn:focus-visible {
+  outline: 3px solid rgba(0,149,245,0.18);
+  outline-offset: 4px;
 }
 
 .hero-right {

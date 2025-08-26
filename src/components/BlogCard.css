@@ -2,15 +2,15 @@
 .blog-card {
 	display: flex;
 	align-items: stretch; /* let children fill height */
-	border: 4px dashed #2b9bff; /* blue dashed border */
+	border: 4px dashed #1785e6; /* simple blue dashed rounded border */
 	border-radius: 18px;
 	background: #fff;
 	box-sizing: border-box;
 	width: 80vw;
 	height: 25vh;
 	margin: 18px auto;
-	padding: 0; 
-	overflow: hidden; 
+	padding: 0;
+	overflow: hidden;
 	transition: box-shadow 220ms ease, transform 220ms ease, border-color 220ms ease;
 }
 
@@ -42,7 +42,12 @@
 .blog-card-title {
 	font-family: 'Quicksand', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 	font-weight: 600;
+	/* gradient text: fallback color then clipped gradient */
 	color: #1785e6;
+	background: linear-gradient(90deg, #0095F5, #0045D0);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 	font-size: 2.2rem;
 	margin: 0 0 12px 0;
 }
@@ -74,7 +79,7 @@
 .blog-card:hover .read-button,
 .blog-card:focus-within .read-button {
     /* transition-duration: 0.5s; */
-    background: #1785e6;
+    background: linear-gradient(90deg, #0095F5, #0045D0);;
     color: #fff;
 }
 
