@@ -61,16 +61,16 @@
 }
 
 /* Remove underlines from all links inside the footer */
-.site-footer a,
-.site-footer a,
-.site-footer a:link,
-.site-footer a:visited {
+.footer-columns a,
+.footer-columns a,
+.footer-columns a:link,
+.footer-columns a:visited {
   text-decoration: none;
   color: #d6d6d6; /* ensure links (including :visited) use light grey, not browser default purple */
 }
-.site-footer a:hover,
-.site-footer a:focus,
-.site-footer a:active {
+.footer-columns a:hover,
+.footer-columns a:focus,
+.footer-columns a:active {
   text-decoration: none;
   color: #d6d6d6;
 }
@@ -114,7 +114,7 @@
 .footer-links {
   display: flex;
   gap: 28px;
-  color: #3c3c3c;
+  color: #222;
 }
 
 .footer-links a {
