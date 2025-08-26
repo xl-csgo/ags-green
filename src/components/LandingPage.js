@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from '../assets/logo.svg';
 import bg from '../assets/bg.png';
 import CompanyDescription from './CompanyDescription';
 import BlogPosts from './BlogPosts';
+import ContactSection from './ContactSection';
 
 const LandingPage = () => {
 	const logo = <Logo width={56} height={56} />;
@@ -17,6 +18,7 @@ const LandingPage = () => {
 			<CompanyDescription />
 			<Offerings />
 			<BlogPosts />
+			<ContactSection />
 		</div>
 	);
 };
