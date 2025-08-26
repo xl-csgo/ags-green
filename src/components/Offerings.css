@@ -3,6 +3,7 @@
   box-sizing: border-box;
   margin: 0 auto;
   padding: 6vh 0;
+  padding-bottom: 0;
   background: #fff;
 }
 

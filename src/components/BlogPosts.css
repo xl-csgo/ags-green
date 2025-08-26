@@ -1,0 +1,28 @@
+.blog-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.rhombus {
+    display: block;
+}
+
+.blog-posts-title {
+  font-size: 3.5rem;
+  line-height: 1.15;
+  margin: 0 0 0.6rem 0;
+  font-weight: 650;
+  color: #111;
+  word-spacing: 0.1rem;
+  padding-bottom: 2.5vh;
+  padding-top: 2.5vh;
+}
+
+.highlight {
+  color: #FF9A24;
+}
+
+.spacer {
+    padding-bottom:5vh;
+}

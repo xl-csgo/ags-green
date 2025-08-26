@@ -5,6 +5,7 @@ import Offerings from './Offerings';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import bg from '../assets/bg.png';
 import CompanyDescription from './CompanyDescription';
+import BlogPosts from './BlogPosts';
 
 const LandingPage = () => {
 	const logo = <Logo width={56} height={56} />;
@@ -15,6 +16,7 @@ const LandingPage = () => {
 			<HeroSection logo={logo} background={background} />
 			<CompanyDescription />
 			<Offerings />
+			<BlogPosts />
 		</div>
 	);
 };
