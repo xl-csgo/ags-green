@@ -118,7 +118,7 @@
 }
 
 .footer-links a {
-  color: #3c3c3c;
+  color: #222;
   background: #fff;
   padding: 8px 12px;
   border-radius: 6px;
@@ -127,7 +127,7 @@
 }
 
 .copyright {
-  color: #d6d6d6;
+  color: #222;
   font-size: 0.95rem;
 }
 
