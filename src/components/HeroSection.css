@@ -1,7 +1,7 @@
 .hero-section {
   position: relative;
   width: 100vw;
-  min-height: 90vh;
+  min-height: 100vh;
   color: #fff;
   overflow: hidden;
   display: flex;
@@ -19,7 +19,7 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 60px 40px;
-  padding-top: 20vh;
+  padding-top: 27.5vh;
 }
 
 .hero-left {
@@ -104,28 +104,64 @@
 
 .hero-right {
   max-width: 400px;
-  margin-top: 30vh;
+  margin-top: 37.5vh;
   margin-right: 25px;
 }
 
 .hero-hindi {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
   display: inline-block;
   margin-bottom: 8px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .hero-hindi-desc {
   display: inline-block;
-  vertical-align:bottom;
+  vertical-align:middle;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #d6d6d6;
-  line-height: 1.25;
+  line-height: 1.5;
   width: 18vw;
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
   hyphens: auto;
+}
+
+/* Scroll down hint */
+.scroll-down {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 40;
+  opacity: 0.95;
+}
+
+.scroll-icon {
+  display: block;
+  width: 36px;
+  height: 58px;
+  color: #fff;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
+  transition: transform 0.18s ease, opacity 0.18s ease;
+  animation: breathe 2.6s ease-in-out infinite;
+}
+
+.scroll-down:focus .scroll-icon,
+.scroll-down:hover .scroll-icon {
+  transform: translateY(-4px);
+  opacity: 1;
+}
+
+@keyframes breathe {
+  0% { transform: translateY(0) scale(1); opacity: 0.95; }
+  50% { transform: translateY(-6px) scale(1.02); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.95; }
 }

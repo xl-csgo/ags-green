@@ -74,13 +74,11 @@
 
 .learn-btn:hover,
 .learn-btn:focus {
-  /* brighter, larger shadow and slight lift */
   box-shadow: 0 14px 40px rgba(4,102,255,0.38);
   transform: translateY(-3px);
 }
 
 .learn-btn:active {
-  /* press effect */
   box-shadow: 0 10px 30px rgba(4,102,255,0.32);
   transform: translateY(-1px);
 }

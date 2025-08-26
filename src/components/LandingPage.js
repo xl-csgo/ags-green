@@ -7,6 +7,7 @@ import bg from '../assets/bg.png';
 import CompanyDescription from './CompanyDescription';
 import BlogPosts from './BlogPosts';
 import ContactSection from './ContactSection';
+import Footer from './footer';
 
 const LandingPage = () => {
 	const logo = <Logo width={56} height={56} />;
@@ -19,6 +20,7 @@ const LandingPage = () => {
 			<Offerings />
 			<BlogPosts />
 			<ContactSection />
+			<Footer />
 		</div>
 	);
 };
