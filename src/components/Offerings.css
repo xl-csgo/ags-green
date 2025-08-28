@@ -91,9 +91,15 @@
   position: absolute;
   left: 55%;
   transform: translate(-50%,90%) scale(1.2);
+  z-index: 0;
 }
 .animation-overlay-2{
   position: absolute;
   left: 53%;
   transform: translate(-50%,150%) scale(1.2);
+  z-index: 0;
+}
+
+.offering-illustration {
+  z-index: 1;
 }

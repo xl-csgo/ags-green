@@ -30,7 +30,7 @@ const HeroSection = ({ logo, background }) => (
           solar parks, professional operation and maintenance services</span>
         </span>
       </div>
-    </div>s
+    </div>
     
       {/* Scroll down hint - thin white circle with a down arrow */}
       <a href="#next" className="scroll-down" aria-label="Scroll down to next section">
