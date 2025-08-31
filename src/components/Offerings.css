@@ -17,14 +17,6 @@
   justify-content: space-between;
 }
 
-/* .offering-row--left {
-  justify-content: flex-start;
-}
-
-.offering-row--right {
-  justify-content: flex-end;
-} */
-
 .offering-text {
   width: 55%;
   max-width: 40vw;

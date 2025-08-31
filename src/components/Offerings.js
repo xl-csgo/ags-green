@@ -111,6 +111,7 @@ function Offerings() {
 					</linearGradient>
 					</defs>
 				</svg>
+
 			</div>
 			
 		</div>
