@@ -3,7 +3,7 @@ import './Offerings.css';
 import solarSvg from '../assets/solar.svg';
 import sunSvg from '../assets/sun.svg';
 import bulbSvg from '../assets/bulb.svg';
-
+import gsap from 'gsap';
 
 
 function Offerings() {
@@ -28,6 +28,31 @@ function Offerings() {
 				}
 			});
 		}, { threshold: 0.2 });
+
+		gsap.to(".stop-1", {
+  			duration: 1.5,
+  			attr: { "stop-color": "#64c7fcff" }, // This is the original color of the first stop
+			repeat: -1,
+  			yoyo: true,
+  			ease: "power1.inOut"
+		});
+
+		gsap.to(".stop-2", {
+  			duration: 1.5,
+  			attr: { "stop-color": "#00e1ffff" }, // This is the final color of the second stop
+  			repeat: -1,
+  			yoyo: true,
+  			ease: "power1.inOut"
+		});
+
+		gsap.to("#bulb", {
+  			duration: 1.5,
+  			scale: 1.05,
+  			filter: "drop-shadow(0 0 20px rgba(0, 255, 0, 0.65))",
+  			repeat: -1,
+  			yoyo: true,
+  			ease: "power1.inOut"
+			});
 
 		if (overlayRef.current) obs.observe(overlayRef.current);
 		if (overlayRef2.current) obs.observe(overlayRef2.current);
@@ -133,9 +158,33 @@ function Offerings() {
 				</defs>
 			</svg>
 
-			<div className="offering-illustration">
-				<img src={solarSvg} alt="Solar park and ground mounted illustration" />
+			<div className="offering-illustration" id = "solar-panel">
+				<svg width="627" height="632" viewBox="0 0 627 642" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M-146 24H590C609.33 24 625 39.67 625 59V607C625 626.33 609.33 642 590 642H-146V24Z" fill="url(#paint0_linear_2016_232)"/>
+					<rect x="44" width="16" height="642" fill="white"/>
+					<rect x="118" width="16" height="642" fill="white"/>
+					<rect x="192" width="16" height="642" fill="white"/>
+					<rect x="266" width="16" height="642" fill="white"/>
+					<rect x="340" width="16" height="642" fill="white"/>
+					<rect x="414" width="16" height="642" fill="white"/>
+					<rect x="488" width="16" height="642" fill="white"/>
+					<rect x="562" width="16" height="642" fill="white"/>
+					<rect x="-156" y="113" width="16" height="783" transform="rotate(-90 -156 113)" fill="white"/>
+					<rect x="-156" y="197" width="16" height="783" transform="rotate(-90 -156 197)" fill="white"/>
+					<rect x="-156" y="281" width="16" height="783" transform="rotate(-90 -156 281)" fill="white"/>
+					<rect x="-156" y="365" width="16" height="783" transform="rotate(-90 -156 365)" fill="white"/>
+					<rect x="-156" y="449" width="16" height="783" transform="rotate(-90 -156 449)" fill="white"/>
+					<rect x="-156" y="533" width="16" height="783" transform="rotate(-90 -156 533)" fill="white"/>
+					<rect x="-156" y="617" width="16" height="783" transform="rotate(-90 -156 617)" fill="white"/>
+					<defs>
+						<linearGradient id="paint0_linear_2016_232" x1="179.824" y1="12" x2="58.5905" y2="617.736" gradientUnits="userSpaceOnUse">
+							<stop class="stop-1" stop-color="#0076f5ff"/>
+							<stop class = "stop-2" offset="1" stop-color="#0045D0"/>
+						</linearGradient>
+					</defs>
+				</svg>
 			</div>
+
 			<div className="offering-text offering-text--right">
 				<h3 className="offering-title"><span className="highlight">Solar</span> Parks And <span className="highlight">Ground Mounted</span> Solutions</h3>
 				<p className="offering-desc">Turnkey development of large-scale, ground-mounted solar projects and solar parks. From land identification to project execution, we provide efficient power generation for industries, utilities, and communities, guaranteeing high output and reliable operation</p>
@@ -149,14 +198,13 @@ function Offerings() {
 				<p className="offering-desc">Comprehensive operations and maintenance to maximize plant performance, minimize downtime, and protect your investment. Our EPC team delivers complete project management for all types of solar installations, focusing on quality, compliance, and timely delivery.</p>
 			<a className="learn-btn" href="/#learn-more">Learn More</a>
 			</div>
-			<div className="offering-illustration">
+			<div className="offering-illustration" id = "bulb">
 				<img src={bulbSvg} alt="Operations & maintenance and EPC services illustration" />
 			</div>
 		</div>
 
 	</section>
 	);
-
 }
 
 export default Offerings;
