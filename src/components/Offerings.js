@@ -1,75 +1,128 @@
 import React, { useRef, useEffect } from 'react';
 import './Offerings.css';
-import solarSvg from '../assets/solar.svg';
-import sunSvg from '../assets/sun.svg';
 import bulbSvg from '../assets/bulb.svg';
 import gsap from 'gsap';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 
 
 function Offerings() {
-	const animRef = useRef(null);
 	const overlayRef = useRef(null);
-	const animRef2 = useRef(null);
 	const overlayRef2 = useRef(null);
 
+	// timelines for overlay path animations
+	const pathTl1Ref = useRef(null);
+	const pathTl2Ref = useRef(null);
+
 	useEffect(() => {
+		gsap.registerPlugin(MotionPathPlugin);
 		if (!overlayRef.current && !overlayRef2.current) return;
 		const obs = new IntersectionObserver((entries) => {
 			entries.forEach((e) => {
 				if (e.isIntersecting) {
 					try {
-						if (e.target === overlayRef.current && animRef.current && typeof animRef.current.beginElement === 'function') {
-							animRef.current.beginElement();
+						// trigger GSAP timelines when the SVG overlays enter the viewport
+						if (e.target === overlayRef.current && pathTl1Ref.current) {
+							pathTl1Ref.current.restart();
 						}
-						if (e.target === overlayRef2.current && animRef2.current && typeof animRef2.current.beginElement === 'function') {
-							animRef2.current.beginElement();
+						if (e.target === overlayRef2.current && pathTl2Ref.current) {
+							pathTl2Ref.current.restart();
 						}
 					} catch (err) { /* ignore */ }
+				}
+				else {
+					// pause when out of view to save cycles
+					if (e.target === overlayRef.current && pathTl1Ref.current) {
+						pathTl1Ref.current.pause();
+					}
+					if (e.target === overlayRef2.current && pathTl2Ref.current) {
+						pathTl2Ref.current.pause();
+					}
 				}
 			});
 		}, { threshold: 0.2 });
 
 		gsap.to(".stop-1", {
-  			duration: 1.5,
-  			attr: { "stop-color": "#64c7fcff" }, // This is the original color of the first stop
+  			duration: 2,
+  			attr: { "stop-color": "#50ade0ff" }, // This is the original color of the first stop
 			repeat: -1,
   			yoyo: true,
   			ease: "power1.inOut"
 		});
 
 		gsap.to(".stop-2", {
-  			duration: 1.5,
-  			attr: { "stop-color": "#00e1ffff" }, // This is the final color of the second stop
+  			duration: 2,
+  			attr: { "stop-color": "#08bcd3ff" }, // This is the final color of the second stop
   			repeat: -1,
   			yoyo: true,
   			ease: "power1.inOut"
 		});
 
 		gsap.to("#bulb", {
-  			duration: 1.5,
+  			duration: 2,
   			scale: 1.05,
   			filter: "drop-shadow(0 0 20px rgba(0, 255, 0, 0.65))",
   			repeat: -1,
   			yoyo: true,
   			ease: "power1.inOut"
-			});
+		});
+
+		
+
+
+		// Build "draw path + move marker" timelines for both overlays
+		const path1 = document.getElementById('overlayPath1');
+		const dot1 = document.getElementById('overlayDot1');
+		if (path1 && dot1) {
+			// keep the dashed pattern defined in SVG (e.g., 35 35) and animate only dash offset
+			gsap.set(dot1, { autoAlpha: 0, xPercent: -50, yPercent: -50, transformOrigin: '50% 50%' });
+			pathTl1Ref.current = gsap.timeline({ paused: true, repeat: -1 })
+				.fromTo(path1, { attr: { 'stroke-dashoffset': 0 } }, { duration: 3, ease: 'none', attr: { 'stroke-dashoffset': -70 } }, 0)
+				.to(dot1, {
+					duration: 3,
+					ease: 'power1.inOut',
+					autoAlpha: 1,
+					motionPath: { path: path1, align: path1, autoRotate: true, alignOrigin: [0.5, 0.5] }
+				}, 0)
+				.to(dot1, { duration: 0.2, autoAlpha: 0 }, '>-0.05');
+		}
+
+		const path2 = document.getElementById('overlayPath2');
+		const dot2 = document.getElementById('overlayDot2');
+		if (path2 && dot2) {
+			gsap.set(dot2, { autoAlpha: 0, xPercent: -50, yPercent: -50, transformOrigin: '50% 50%' });
+			pathTl2Ref.current = gsap.timeline({ paused: true, repeat: -1 })
+				.fromTo(path2, { attr: { 'stroke-dashoffset': 0 } }, { duration: 3, ease: 'none', attr: { 'stroke-dashoffset': -70 } }, 0)
+				.to(dot2, {
+					duration: 3,
+					ease: 'power1.inOut',
+					autoAlpha: 1,
+					motionPath: { path: path2, align: path2, autoRotate: true, alignOrigin: [0.5, 0.5] }
+				}, 0)
+				.to(dot2, { duration: 0.2, autoAlpha: 0 }, '>-0.05');
+		}
 
 		if (overlayRef.current) obs.observe(overlayRef.current);
 		if (overlayRef2.current) obs.observe(overlayRef2.current);
-		return () => obs.disconnect();
+		return () => {
+			obs.disconnect();
+			pathTl1Ref.current && pathTl1Ref.current.kill();
+			pathTl2Ref.current && pathTl2Ref.current.kill();
+		};
 	}, []);
 
 	return (
 	<section className="offerings">
 		<div className="offering-row offering-row--left">
 			<svg ref={overlayRef} className="animation-overlay-1" width="624" height="289" viewBox="0 0 624 289" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path id="overlayPath1" opacity="0.5" d="M619 8.37211C467.453 -7.60632 132.487 25.1494 5 284" stroke="url(#paint0_linear_2016_108)" stroke-width="10" stroke-linecap="round" stroke-dasharray="35 35"/>
+			<path id="overlayPath1" opacity="0.5" d="M619 8.37211C467.453 -7.60632 132.487 25.1494 5 284" stroke="url(#paint0_linear_2016_108)" stroke-width="12" stroke-linecap="round" stroke-dasharray="35 35"/>
 			{/* moving square that follows the path (right -> left) */}
-			<rect x="0" y="0" width="14" height="14" rx="3" fill="#FF9A24">
+			{/* <rect x="0" y="0" width="14" height="14" rx="3" fill="#FF9A24">
 				<animateMotion ref={animRef} begin="indefinite" dur="3s" fill="freeze" rotate="auto">
 					<mpath xlinkHref="#overlayPath1" />
 				</animateMotion>
-			</rect>
+			</rect> */}
+			{/* GSAP marker that moves along the path */}
+			<circle id="overlayDot1" cx="0" cy="0" r="10" fill="#FFBE0C" style={{ opacity: 0 }} />
 				<defs>
 				<linearGradient id="paint0_linear_2016_108" x1="312" y1="5" x2="312" y2="284" gradientUnits="userSpaceOnUse">
 				<stop stop-color="#FFBE0C"/>
@@ -143,13 +196,15 @@ function Offerings() {
 
 		<div className="offering-row offering-row--right">
 			<svg ref={overlayRef2} className="animation-overlay-2" width="514" height="246" viewBox="0 0 514 246" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path id="overlayPath2" opacity="0.5" d="M5.00001 7.85239C129.397 -5.66341 404.353 22.044 509 241" stroke="url(#paint0_linear_2016_109)" stroke-width="10" stroke-linecap="round" stroke-dasharray="35 35"/>
+				<path id="overlayPath2" opacity="0.5" d="M5.00001 7.85239C129.397 -5.66341 404.353 22.044 509 241" stroke="url(#paint0_linear_2016_109)" stroke-width="12" stroke-linecap="round" stroke-dasharray="35 35"/>
 				{/* moving square that follows the path (left -> right) */}
-				<rect x="0" y="0" width="14" height="14" rx="3" fill="#0095F5">
+				{/* <rect x="0" y="0" width="14" height="14" rx="3" fill="#0095F5">
 					<animateMotion ref={animRef2} begin="indefinite" dur="3s" fill="freeze" rotate="auto">
 						<mpath xlinkHref="#overlayPath2" />
 					</animateMotion>
-				</rect>
+				</rect> */}
+				{/* GSAP marker that moves along the path */}
+				<circle id="overlayDot2" cx="0" cy="0" r="10" fill="#0095F5" style={{ opacity: 0 }} />
 				<defs>
 				<linearGradient id="paint0_linear_2016_109" x1="257" y1="5" x2="257" y2="241" gradientUnits="userSpaceOnUse">
 				<stop stop-color="#FFBE0C"/>
@@ -161,14 +216,14 @@ function Offerings() {
 			<div className="offering-illustration" id = "solar-panel">
 				<svg width="627" height="632" viewBox="0 0 627 642" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M-146 24H590C609.33 24 625 39.67 625 59V607C625 626.33 609.33 642 590 642H-146V24Z" fill="url(#paint0_linear_2016_232)"/>
-					<rect x="44" width="16" height="642" fill="white"/>
-					<rect x="118" width="16" height="642" fill="white"/>
-					<rect x="192" width="16" height="642" fill="white"/>
-					<rect x="266" width="16" height="642" fill="white"/>
-					<rect x="340" width="16" height="642" fill="white"/>
-					<rect x="414" width="16" height="642" fill="white"/>
-					<rect x="488" width="16" height="642" fill="white"/>
-					<rect x="562" width="16" height="642" fill="white"/>
+					<rect x="44" y="24" width="16" height="642" fill="white"/>
+					<rect x="118" y="24" width="16" height="642" fill="white"/>
+					<rect x="192" y="24" width="16" height="642" fill="white"/>
+					<rect x="266" y="24" width="16" height="642" fill="white"/>
+					<rect x="340" y="24" width="16" height="642" fill="white"/>
+					<rect x="414" y="24" width="16" height="642" fill="white"/>
+					<rect x="488" y="24" width="16" height="642" fill="white"/>
+					<rect x="562" y="24" width="16" height="642" fill="white"/>
 					<rect x="-156" y="113" width="16" height="783" transform="rotate(-90 -156 113)" fill="white"/>
 					<rect x="-156" y="197" width="16" height="783" transform="rotate(-90 -156 197)" fill="white"/>
 					<rect x="-156" y="281" width="16" height="783" transform="rotate(-90 -156 281)" fill="white"/>
