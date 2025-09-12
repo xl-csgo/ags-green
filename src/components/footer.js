@@ -10,7 +10,7 @@ const Footer = () => {
                 <div className="footer-top">
                     <div className="footer-left">
                         <Logo className="footer-logo" />
-                        <p className="footer-desc">A little paragraph about the company</p>
+                        <p className="footer-desc">Empowering businesses with innovative solar rooftop solutions.</p>
                             <div className="footer-socials" aria-label="social links">
                                 <a href="/" className="social-icon" aria-label="Facebook"><SiFacebook size={24} /></a>
                                 <a href="/" className="social-icon" aria-label="Twitter"><SiX size={24} /></a>
@@ -21,26 +21,26 @@ const Footer = () => {
                     </div>
                     <div className="footer-columns">
                         <div className="footer-col">
-                            <h4>Product</h4>
+                            {/* <h4>Product</h4>
                             <ul>
                                 <li><a href="/">Landing Page</a></li>
                                 <li><a href="/">Popup Builder</a></li>
                                 <li><a href="/">Web-design</a></li>
                                 <li><a href="/">Content</a></li>
                                 <li><a href="/">Integrations</a></li>
-                            </ul>
+                            </ul> */}
                         </div>
                         <div className="footer-col">
-                            <h4>Use Cases</h4>
+                            {/* <h4>Use Cases</h4>
                             <ul>
                                 <li><a href="/">Web-designers</a></li>
                                 <li><a href="/">Marketers</a></li>
                                 <li><a href="/">Small Business</a></li>
                                 <li><a href="/">Website Builder</a></li>
-                            </ul>
+                            </ul> */}
                         </div>
                         <div className="footer-col">
-                            <h4>Resources</h4>
+                            {/* <h4>Resources</h4>
                             <ul>
                                 <li><a href="/">Academy</a></li>
                                 <li><a href="/">Blog</a></li>
@@ -48,17 +48,17 @@ const Footer = () => {
                                 <li><a href="/">Hosting</a></li>
                                 <li><a href="/">Developers</a></li>
                                 <li><a href="/">Support</a></li>
-                            </ul>
+                            </ul> */}
                         </div>
                         <div className="footer-col">
-                            <h4>Company</h4>
+                            {/* <h4>Company</h4>
                             <ul>
                                 <li><a href="/">About Us</a></li>
                                 <li><a href="/">Careers</a></li>
                                 <li><a href="/">FAQs</a></li>
                                 <li><a href="/">Teams</a></li>
                                 <li><a href="/">Contact Us</a></li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                 </div>

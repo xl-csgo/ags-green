@@ -25,7 +25,7 @@ const HeroSection = ({ logo, background }) => (
       </div>
       <div className="hero-right">
         <span className="hero-hindi">
-          <span style={{ color: '#FFA93D' }}>ऊर्जा</span> से <span style={{ color: '#FFA93D' }}>उन्नति</span> की<br />
+          <span style={{ color: '#1bcb1bff' }}>ऊर्जा</span> से <span style={{ color: '#1bcb1bff' }}>उन्नति</span> की<br />
           और <span className="hero-hindi-desc">
           solar parks, professional operation and maintenance services</span>
         </span>

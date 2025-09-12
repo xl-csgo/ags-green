@@ -14,9 +14,9 @@ const ContactSection = () => {
     }
 
     return (
-        <div>
+        <div id='contact'>
             <div className='contact-head'>
-                <h1 className='contact-title'>Contact Us For <span className='highlight'>A Quote</span> Today</h1>
+                <h1 className='contact-title'>Contact Us For <span className='contact-highlight'>A Quote</span> Today</h1>
                 <p className='contact-desc'>Get in touch with us today—we’re here to help with information, quotes, and expert guidance. Fill out the form below or reach out to our team, and we’ll respond promptly to support your renewable energy journey.</p>
             </div>
             <section className="contact-section">
@@ -38,9 +38,9 @@ const ContactSection = () => {
 
                     <aside className="contact-info">
                         <h2 className="contact-title">Contact Us</h2>
-                        <p className="contact-line"><strong>Phone:</strong> +91-12345-67890</p>
-                        <p className="contact-line"><strong>Email:</strong> contact@example.com</p>
-                        <p className="contact-line"><strong>Address:</strong> 123 Solar Lane, Mumbai, MH</p>
+                        <p className="contact-line"><strong>Phone:</strong> +91 98705 12130</p>
+                        <p className="contact-line"><strong>Email:</strong> info@agsgreen.com</p>
+                        <p className="contact-line"><strong>Address:</strong> Plot No. WA-05, Sector-130, Noida-201301, UP</p>
                     </aside>
                 </div>
             </section>

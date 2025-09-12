@@ -43,7 +43,7 @@ const CompanyDescription = () => {
         const chars = splitInstance.current.chars || [];
         const containerRect = el.getBoundingClientRect();
         const startColor = '#000000'; // black
-        const endColor = '#FF9A24'; // orange
+        const endColor = '#1bcb1b'; // green
 
         const hexToRgb = (hex) => {
           const h = hex.replace('#', '');
