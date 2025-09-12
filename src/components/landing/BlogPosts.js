@@ -1,8 +1,8 @@
 import React from 'react';
 import './BlogPosts.css';
-import Rhombus from '../assets/rhombus.svg';
+import Rhombus from '../../assets/rhombus.svg';
 import BlogCard from './BlogCard';
-import bg from '../assets/blog.png';
+import bg from '../../assets/blog.png';
 
 
 const BlogPosts = () => {

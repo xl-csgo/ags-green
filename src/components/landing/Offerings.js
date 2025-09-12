@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './Offerings.css';
-import bulbSvg from '../assets/bulb.svg';
+import bulbSvg from '../../assets/bulb.svg';
 import gsap from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 
@@ -67,7 +67,6 @@ function Offerings() {
 		});
 
 		
-
 
 		// Build "draw path + move marker" timelines for both overlays
 		const path1 = document.getElementById('overlayPath1');

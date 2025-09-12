@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './CompanyDescription.css';
-import Rhombus from '../assets/rhombus.svg';
+import Rhombus from '../../assets/rhombus.svg';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitText from 'gsap/SplitText';

@@ -1,0 +1,67 @@
+.career-hero {
+  position: relative;
+  width: calc(100% - 120px); /* leave horizontal gap on both sides */
+  height: 80vh; /* target approx 80% of viewport height */
+  min-height: 520px;
+  max-height: 920px;
+  margin: 12px 60px 20px 60px; /* smaller top gap to sit closer to navbar */
+  border-radius: 35px;
+  overflow: hidden;
+  background: #111; /* fallback */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: stretch;
+  padding: 0; /* inner wrapper controls padding */
+}
+
+.career-hero-inner {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  padding: 36px 70px 54px 70px; /* reduce padding so content sits toward bottom */
+  box-sizing: border-box;
+  gap: 6rem;
+  align-items: flex-end; /* align both columns to bottom */
+}
+
+.career-hero-left { 
+  flex: 0 0 auto; 
+  display:flex; 
+  align-items:flex-end; 
+}
+.career-hero-right { 
+  flex: 1; 
+  display: flex; 
+  align-items: flex-end; 
+  justify-content:flex-start; 
+  padding-left: 360px; 
+} /* push paragraph further right */
+
+.career-hero-title { 
+  font-size: clamp(2.6rem, 4vw, 4.2rem);
+  line-height: 1.05;
+  font-weight: 500;
+  margin: 0;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+.career-hero-title .accent { 
+  color: #FFA93D;
+  font-weight: 600; 
+}
+
+.career-hero-title .company { 
+  display: inline-block; 
+  margin-top: 14px; 
+  font-weight: 500; 
+}
+
+.career-hero-text {
+  margin: 0 0 6px 0;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 450;
+  max-width: 440px;
+}

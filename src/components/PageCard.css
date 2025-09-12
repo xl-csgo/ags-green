@@ -1,0 +1,89 @@
+.page-card {
+  width: 85vw;
+  margin: 24px auto;
+  padding: 48px 32px;
+  border-radius: 20px;
+  background: #f6fbff; /* light neutral default */
+}
+
+.page-card__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch; /* allow children to fill height so heading can bottom-align */
+  gap: 40px;
+}
+
+.page-card__heading {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: row; /* title and arrow inline */
+  align-items: flex-end; /* bottom-align title and arrow */
+  gap: 16px;
+}
+
+.page-card__title {
+  font-size: 2.5rem;
+  font-weight: 650;
+  margin: 0;
+  color: #0f1724; /* dark text */
+}
+
+.page-card__arrow {
+  font-size: 3rem;
+  color: #0a84ff;
+  font-weight: 700;
+}
+
+.page-card__content {
+  flex: 1;
+  color: #0b3b64;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Make first paragraph neutral grey and second paragraph use theme color */
+.page-card__content p:first-of-type { 
+    color: #6b7280;
+    font-weight: 500;
+}
+.page-card__content p:nth-of-type(2) { 
+    color: inherit;
+    font-weight: 450;
+}
+
+/* Theme: blue */
+.page-card--blue {
+  background: #f0f7ff;
+}
+
+.page-card--blue .page-card__title {
+  color: #0b72d6;
+}
+
+.page-card--blue .page-card__content {
+  color: #0a5fa8;
+}
+
+/* Theme: orange */
+.page-card--orange {
+  background: #fff8f1; /* paler light orange */
+}
+
+.page-card--orange .page-card__title {
+  color: #ffb74d; /* lighter amber */
+}
+
+.page-card--orange .page-card__arrow {
+  color: #ffb74d;
+}
+
+.page-card--orange .page-card__content {
+  color: #f59e2b; /* softer orange for content */
+}
+
+@media (max-width: 800px) {
+  .page-card__inner { flex-direction: column; align-items: flex-start; }
+  .page-card__heading { flex: none; align-items: center; }
+  .page-card__title { font-size: 36px; }
+}

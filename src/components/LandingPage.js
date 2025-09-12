@@ -1,12 +1,11 @@
 import React from 'react';
-import './LandingPage.css';
-import HeroSection from './HeroSection';
-import Offerings from './Offerings';
+import HeroSection from './landing/HeroSection';
+import Offerings from './landing/Offerings';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import bg from '../assets/bg.png';
-import CompanyDescription from './CompanyDescription';
-import BlogPosts from './BlogPosts';
-import ContactSection from './ContactSection';
+import CompanyDescription from './landing/CompanyDescription';
+import BlogPosts from './landing/BlogPosts';
+import ContactSection from './landing/ContactSection';
 import Footer from './footer';
 
 const LandingPage = () => {
