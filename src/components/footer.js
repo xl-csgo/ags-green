@@ -1,4 +1,5 @@
 import React from 'react'
+import { SiFacebook, SiX, SiYoutube, SiInstagram, SiGmail } from '@icons-pack/react-simple-icons';
 import './footer.css'
 import { ReactComponent as Logo } from '../assets/logo.svg'
 
@@ -11,11 +12,11 @@ const Footer = () => {
                         <Logo className="footer-logo" />
                         <p className="footer-desc">A little paragraph about the company</p>
                             <div className="footer-socials" aria-label="social links">
-                                <a href="/" className="social-icon" aria-label="Facebook">f</a>
-                                <a href="/" className="social-icon" aria-label="Twitter">t</a>
-                                <a href="/" className="social-icon" aria-label="YouTube">y</a>
-                                <a href="/" className="social-icon" aria-label="Instagram">i</a>
-                                <a href="/" className="social-icon" aria-label="Dribbble">d</a>
+                                <a href="/" className="social-icon" aria-label="Facebook"><SiFacebook size={24} /></a>
+                                <a href="/" className="social-icon" aria-label="Twitter"><SiX size={24} /></a>
+                                <a href="/" className="social-icon" aria-label="YouTube"><SiYoutube size={24} /></a>
+                                <a href="/" className="social-icon" aria-label="Instagram"><SiInstagram size={24} /></a>
+                                <a href="/" className="social-icon" aria-label="Dribbble"><SiGmail size={24} /></a>
                             </div>
                     </div>
                     <div className="footer-columns">
@@ -63,13 +64,13 @@ const Footer = () => {
                 </div>
                 <div className="footer-bottom">
                     <p className="copyright">© 2025 All Rights Reserved</p>
-                        <nav className="footer-links">
+                        {/* <nav className="footer-links">
                             <a href="/privacy-policy">Privacy Policy</a>
                             <a href="/terms">Terms of Use</a>
                             <a href="/sales-and-refunds">Sales and Refunds</a>
                             <a href="/legal">Legal</a>
                             <a href="/sitemap">Site Map</a>
-                        </nav>
+                        </nav> */}
                 </div>
             </div>
         </footer>

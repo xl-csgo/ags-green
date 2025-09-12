@@ -9,7 +9,7 @@ const HeroSection = ({ logo, background }) => (
   >
     <div className="hero-brand">
       {logo}
-      <span className="hero-company">AGS GREEN RENEW PVT. LTD.</span>
+      <span className="hero-company">AGS GREEN RENEW PRIVATE LIMITED</span>
     </div>
     <div className="hero-container">
       <div className="hero-left">
