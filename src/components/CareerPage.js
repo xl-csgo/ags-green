@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './footer';
 import Hero from './career/CareerHero';
 import CareerText from './career/CareerText';
+import JobList from './JobList';
 import bg from '../assets/bg.png';
 import PageCard from './PageCard';
 
@@ -25,6 +26,7 @@ const CareerPage = () => {
                         <Hero background={bg} />
                         <PageCard heading={"Our Opportunities"} content={content} theme={'blue'} />
                         <CareerText />
+                        <JobList />
                         <Footer />
                 </div>
         );

@@ -1,0 +1,128 @@
+.job-list {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.job-list-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.loading, .error {
+    padding: 3rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.error {
+    color: #d32f2f;
+}
+
+.no-jobs {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.no-jobs p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 3rem 0;
+    padding: 1rem;
+}
+
+.pagination-btn {
+    background: #1bcb1b;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #17a717;
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.page-number-btn {
+    background: transparent;
+    color: #333;
+    border: 2px solid #ddd;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 40px;
+}
+
+.page-number-btn:hover {
+    border-color: #1bcb1b;
+    color: #1bcb1b;
+}
+
+.page-number-btn.active {
+    background: #1bcb1b;
+    color: white;
+    border-color: #1bcb1b;
+}
+
+@media (max-width: 768px) {
+    .job-list {
+        padding: 1rem;
+    }
+    
+    .jobs-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .pagination-controls {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .page-numbers {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+}
