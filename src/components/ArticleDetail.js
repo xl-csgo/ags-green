@@ -8,7 +8,7 @@ const ArticleDetail = () => {
     useEffect(() => {
         const fetchArticle = async () => {
           try {
-            const response = await axios.get(`http://localhost:1337/api/articles/${id}?populate=*`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/articles/${id}?populate=*`);
             console.log(response.data.data.content);
             setArticle(response.data.data.content);
 

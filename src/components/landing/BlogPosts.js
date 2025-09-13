@@ -1,35 +1,119 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './BlogPosts.css';
 import Rhombus from '../../assets/rhombus.svg';
 import BlogCard from './BlogCard';
-import bg1 from '../../assets/blog1.png';
-import bg2 from '../../assets/blog2.png';
-import bg3 from '../../assets/blog3.png';
+import axios from 'axios';
 
 
 const BlogPosts = () => {
-    const blog_headline1 = 'The Future of solar rooftop solutions';
-    const blog_desc1 = 'As the world races towards cleaner energy, solar rooftops are emerging as a cornerstone of sustainable living. What was once an expensive, niche option is now transforming into a mainstream solution—driven by falling panel costs, government incentives, and innovative technologies.'
-    const blog_link1 = '/#'
-    const blog_image1 = bg1
+    const [articles, setArticles] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [pagination, setPagination] = useState({});
 
-    const blog_headline2 = 'Solar Parks: Powering Industries'
-    const blog_desc2 = 'As the world races towards cleaner energy, solar rooftops are emerging as a cornerstone of sustainable living. What was once an expensive, niche option is now transforming into a mainstream solution—driven by falling panel costs, government incentives, and innovative technologies.'
-    const blog_link2 = '/#'
-    const blog_image2 = bg2
+    useEffect(() => {
+        const fetchArticles = async () => {
+            setLoading(true);
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/articles?fields[0]=title&fields[1]=description&fields[2]=documentId&fields[3]=redirect&populate=*&sort=createdAt:desc&pagination[page]=${currentPage}&pagination[pageSize]=3`);
+                setArticles(response.data.data);
+                setPagination(response.data.meta.pagination);
+                setTotalPages(response.data.meta.pagination.pageCount);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching articles:', error);
+                setError('Failed to load articles');
+                setLoading(false);
+            }
+        };
 
-    const blog_headline3 = 'Why O&M matters for solar plants?'
-    const blog_desc3 = 'As the world shifts towards renewable energy, the importance of Operations and Maintenance (O&M) for solar plants cannot be overstated. Effective O&M practices ensure optimal performance, longevity, and reliability of solar assets, ultimately driving down costs and enhancing energy output.'
-    const blog_link3 = '/#'
-    const blog_image3 = bg3
+        fetchArticles();
+    }, [currentPage]);
+
+    if (loading) {
+        return (
+            <div className="blog-posts">
+                <img src={Rhombus} alt="rhombus" className="rhombus" />
+                <h1 className='blog-posts-title'>Latest in <span className='blog-highlight'>Solar</span> Energy</h1>
+                <div className="loading">Loading articles...</div>
+                <div className='spacer' />
+                <img src={Rhombus} alt="rhombus" className="rhombus" /> 
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="blog-posts">
+                <img src={Rhombus} alt="rhombus" className="rhombus" />
+                <h1 className='blog-posts-title'>Latest in <span className='blog-highlight'>Solar</span> Energy</h1>
+                <div className="error">{error}</div>
+                <div className='spacer' />
+                <img src={Rhombus} alt="rhombus" className="rhombus" /> 
+            </div>
+        );
+    }
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
 
     return (
         <div className="blog-posts">
             <img src={Rhombus} alt="rhombus" className="rhombus" />
             <h1 className='blog-posts-title'>Latest in <span className='blog-highlight'>Solar</span> Energy</h1>
-            <BlogCard blog_headline={blog_headline1} blog_desc={blog_desc1} blog_link={blog_link1} blog_image={blog_image1} />
-            <BlogCard blog_headline={blog_headline2} blog_desc={blog_desc2} blog_link={blog_link2} blog_image={blog_image2} />
-            <BlogCard blog_headline={blog_headline3} blog_desc={blog_desc3} blog_link={blog_link3} blog_image={blog_image3} />
+            {articles.map((article) => (
+                <BlogCard 
+                    key={article.documentId}
+                    article={article}
+                />
+            ))}
+            
+            {totalPages > 1 && (
+                <div className="pagination-controls">
+                    <button 
+                        onClick={handlePrevPage} 
+                        disabled={currentPage === 1}
+                        className="pagination-btn prev-btn"
+                    >
+                        ← Previous
+                    </button>
+                    
+                    <div className="page-numbers">
+                        {[...Array(totalPages)].map((_, index) => {
+                            const pageNum = index + 1;
+                            return (
+                                <button
+                                    key={pageNum}
+                                    onClick={() => setCurrentPage(pageNum)}
+                                    className={`page-number-btn ${currentPage === pageNum ? 'active' : ''}`}
+                                >
+                                    {pageNum}
+                                </button>
+                            );
+                        })}
+                    </div>
+                    
+                    <button 
+                        onClick={handleNextPage} 
+                        disabled={currentPage === totalPages}
+                        className="pagination-btn next-btn"
+                    >
+                        Next →
+                    </button>
+                </div>
+            )}
+            
             <div className='spacer' />
             <img src={Rhombus} alt="rhombus" className="rhombus" /> 
         </div>
