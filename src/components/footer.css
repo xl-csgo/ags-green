@@ -209,6 +209,11 @@
     color: #d6d6d6;
   }
 
+  .social-icon {
+    width: 30px;
+    height: 30px;
+  }
+
   /* Optional: make footer stick to bottom if page content is short */
   body, #root, .App { /* attempt non-invasive sticky footer */
     min-height: 100vh;
