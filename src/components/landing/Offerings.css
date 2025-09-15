@@ -1,33 +1,39 @@
 .offerings {
-  width: 100%;
+  width: 100%; /* Ensure container never exceeds viewport width */
   box-sizing: border-box;
   margin: 0 auto;
   padding: 6vh 0;
   padding-bottom: 0;
   background: #fff;
+  overflow-x: hidden; /* Safety: prevent accidental horizontal overflow */
 }
 
+
 .offering-row {
-  width: 100vw;
+  width: 100%; /* Avoid 100vw (which disregards scrollbar width on some platforms) */
   display: flex;
   align-items: center;
   gap: 2rem;
   box-sizing: border-box;
-  display: flex;
   justify-content: space-between;
+  padding: 0 5vw; /* Internal horizontal spacing instead of child margins */
+  max-width: 100%;
 }
 
 .offering-text {
-  width: 55%;
-  max-width: 40vw;
-  margin: 0 5vw;
+  /* Use flexible columns to prevent combined widths + margins exceeding 100vw */
+  flex: 1 1 0;
+  max-width: 48%;
+  margin: 0; /* Removed vw margins that could push beyond viewport */
+  min-width: 0; /* Prevent flex overflow */
 }
 
 .offering-text--right {
-  width: 55%;
-  max-width: 40vw;
+  flex: 1 1 0;
+  max-width: 48%;
   text-align: left;
-  margin-left: 10vw;
+  margin: 0; /* Remove large left margin causing overflow */
+  min-width: 0;
 }
 
 .offering-title {
@@ -96,6 +102,113 @@
   z-index: 1;
 }
 
+.spacer {
+  display: none;
+  padding-bottom:5vh;
+}
+
 @media (max-width:768px) {
-  
+  .offerings {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 0;
+    background: #fff;
+  }
+
+  .offering-row {
+    width: 100%;
+    padding: 0 6vw; /* Provide breathing room without exceeding width */
+  }
+
+  .offering-text {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .offering-text--right {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .offering-title {
+    font-size: 2.5rem;
+    line-height: 1.25;
+    font-weight: 650;
+    color: #111;
+    word-spacing: 0.1rem;
+    /* Equal horizontal spacing: rely on parent padding instead of extra right margin */
+    margin: 0; 
+    padding-top: 5vh;
+  }
+
+  .offering-highlight {
+    color: #1bcb1b;
+  }
+
+  .offering-desc {
+    color: #666;
+    line-height: 1.5;
+    max-width: 100%;
+    margin-top: 2.5vh;
+    margin-bottom: 5vh;
+    font-size: 1.4em;
+    font-weight: 500;
+    text-align: justify;
+  }
+
+  .learn-btn {
+    display: inline-block;
+    /* Fix invalid comma + huge horizontal padding (80vw) that caused overflow */
+    padding: 2.5vh 10vw; /* desktop default inside media query will be overridden below */
+    background: linear-gradient(90deg,#0095F5,#0045D0);
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(4,102,255,0.18);
+    font-weight: 700;
+    transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+    max-width: 100%;
+    font-size: 1.2rem; 
+    width: 95%;
+    margin: 0 auto; /* center */
+    display: block; /* allow width and centering */
+    padding: 1rem 0.75rem; /* balanced once width set */
+  }
+
+  .learn-btn:hover,
+  .learn-btn:focus {
+    box-shadow: 0 14px 40px rgba(4,102,255,0.38);
+    transform: translateY(-3px);
+  }
+
+  .learn-btn:active {
+    box-shadow: 0 10px 30px rgba(4,102,255,0.32);
+    transform: translateY(-1px);
+  }
+
+  .learn-btn:focus-visible {
+    outline: 3px solid rgba(0,149,245,0.14);
+    outline-offset: 4px;
+  }
+  .animation-overlay-1{
+    display:none;
+  }
+  .animation-overlay-2{
+    display: none;
+  }
+
+  .offering-illustration {
+    display: none;
+  }
+  .spacer {
+    display: block;
+    padding-bottom:5vh;
+  }
 }

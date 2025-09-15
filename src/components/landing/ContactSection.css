@@ -98,13 +98,6 @@
   padding-top: 10vh;
 }
 
-.contact-title {
-  font-size: 2.4rem;
-  margin: 8px 0 14px 0;
-  font-weight: 600;
-  color: #111;
-}
-
 .contact-line {
   color: #222;
   font-size: 1.3rem;
@@ -143,4 +136,45 @@
   justify-content: center; /* horizontally center children */
   align-items: center; /* vertically center children if multiple lines */
   gap: 1vh;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    max-width: 100%; /* Ensure it never exceeds the viewport width on small screens */
+    flex-direction: column; /* stack form and info vertically */
+    align-items: stretch; /* allow full width children */
+    gap: 32px; /* slightly tighter gap on mobile */
+  }
+
+  .contact-form {
+    flex: 1 1 auto; /* allow it to shrink naturally */
+    width: 100%;
+  }
+
+  .contact-info {
+    flex: 1 1 auto; /* remove fixed 340px basis to prevent horizontal scroll */
+    padding-top: 0; /* remove large top spacing on mobile */
+  }
+
+  .contact-title {
+    font-size: 2.5rem; /* scale down heading on small screens */
+    line-height: 1.25;
+    margin:0;
+    padding-top: 2.5vh;
+    padding-bottom: 2.5vh;
+    width: 150%;
+  }
+
+  .contact-head {
+    width: 100%; /* let it fill available width */
+    padding: 0 4px;
+  }
+
+  .contact-desc {
+    width: 150%; /* make it full width on mobile */
+    margin: 0; /* no extra centering needed at full width */
+  }
+  .text-area, .text-input {
+    margin-bottom: 0;
+  }
 }

@@ -131,23 +131,91 @@
   font-size: 0.95rem;
 }
 
-@media (max-width: 900px) {
-  .footer-top {
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 0; /* remove outer padding so the bar spans edge to edge */
+    min-height: 40vh; /* increase overall mobile footer presence */
+    display: flex;
     flex-direction: column;
-    padding: 28px;
+    background: #16191b; /* ensure entire footer area is dark */
   }
-  .footer-columns {
+
+  .footer-inner {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+
+  .footer-top {
+    border-radius: 0; /* remove curves */
+    padding: 56px 24px 12px 24px; /* slightly more space above two-column block */
     width: 100%;
-    flex-wrap: wrap;
-    gap: 24px;
+    flex: 1 0 auto;
+    display: flex;
+    background: transparent; /* parent now supplies background */
   }
+
   .footer-left {
     width: 100%;
-    order: 1;
+    display: grid; /* two-column layout first row, socials full width row 2 */
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto; /* explicit second row for socials */
+    align-items: stretch; /* allow individual cell control */
+    column-gap: 16px;
+    row-gap: 16px;
   }
+
+  .footer-logo {
+    width: 102px; /* 1.5x original 68px */
+    height: 102px;
+    grid-row: 1 / span 2; /* span both rows to center relative to combined height */
+    align-self: center; /* center within the spanning area */
+  }
+
+  .footer-desc {
+    margin: 0;
+    max-width: 100%;
+    font-size: 1.1rem; /* slightly larger for readability */
+    line-height: 1.5;
+  }
+
+  .footer-socials {
+    grid-column: 2; /* appear under description in column 2 */
+    grid-row: 2;
+    margin-top: 0;
+    justify-content: flex-start;
+  }
+
+  .footer-columns,
+  .footer-col,
+  .footer-links {
+    display: none !important; /* hide all extra navigational columns/links */
+  }
+
   .footer-bottom {
-    flex-direction: column-reverse;
-    gap: 12px;
-    align-items: flex-start;
+    display: flex !important; /* re-enable bottom area */
+    background: transparent; /* parent already dark */
+    color: #d6d6d6;
+    padding: 8px 24px 16px 24px; /* tighter spacing to close gap */
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto; /* push to bottom within flex column */
+  }
+  .footer-bottom p,
+  .footer-bottom a {
+    color: #d6d6d6;
+  }
+
+  /* Optional: make footer stick to bottom if page content is short */
+  body, #root, .App { /* attempt non-invasive sticky footer */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .App > *:last-child, #root > *:last-child, body > .site-footer {
+    margin-top: auto;
   }
 }
