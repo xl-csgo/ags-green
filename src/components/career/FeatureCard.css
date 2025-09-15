@@ -63,7 +63,76 @@
 }
 .feature-card--orange .feature-card__icon { color: #ff9a24; }
 
-/* Responsive: allow three in a row container to wrap */
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .feature-card {
+    width: 100%;
+    min-width: auto;
+    max-width: 100%;
+    padding: 20px 20px 24px 20px;
+  }
+
+  .feature-card__inner {
+    gap: 10px;
+  }
+
+  .feature-card__icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  .feature-card__title {
+    font-size: 18px;
+  }
+
+  .feature-card__content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+/* Tablet Responsive Styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .feature-card {
+    width: 28vw;
+    min-width: 240px;
+    max-width: 360px;
+    padding: 24px 24px 30px 24px;
+  }
+
+  .feature-card__title {
+    font-size: 19px;
+  }
+
+  .feature-card__content {
+    font-size: 0.97rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .feature-card {
+    padding: 18px 18px 22px 18px;
+  }
+
+  .feature-card__inner {
+    gap: 8px;
+  }
+
+  .feature-card__icon {
+    font-size: 18px;
+  }
+
+  .feature-card__title {
+    font-size: 17px;
+  }
+
+  .feature-card__content {
+    font-size: 0.9rem;
+  }
+}
+
+/* Legacy responsive rule - keep for compatibility */
 @media (max-width: 920px) {
   .feature-card { max-width: 100%; }
 }

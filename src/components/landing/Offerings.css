@@ -5,7 +5,6 @@
   padding: 6vh 0;
   padding-bottom: 0;
   background: #fff;
-  overflow-x: hidden; /* Safety: prevent accidental horizontal overflow */
 }
 
 
@@ -16,7 +15,6 @@
   gap: 2rem;
   box-sizing: border-box;
   justify-content: space-between;
-  padding: 0 5vw; /* Internal horizontal spacing instead of child margins */
   max-width: 100%;
 }
 
@@ -26,6 +24,8 @@
   max-width: 48%;
   margin: 0; /* Removed vw margins that could push beyond viewport */
   min-width: 0; /* Prevent flex overflow */
+  padding: 0 5vw; /* Internal horizontal spacing instead of child margins */
+  overflow: auto;
 }
 
 .offering-text--right {

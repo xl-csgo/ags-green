@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 const BlogCard = ({ article }) => {
     const imageUrl = article.thumbnail 
-        ? `${article.thumbnail.url}`
+        ? `${process.env.REACT_APP_API_URL}${article.thumbnail.formats?.thumbnail?.url || article.thumbnail.url}`
         : null;
     
     const linkTo = (article.redirect === "none" || article.redirect === null || !article.redirect) 
-        ? `${process.env.REACT_APP_API_URL}/article/${article.documentId}` 
+        ? `/article/${article.documentId}` 
         : article.redirect;
 
     return (
