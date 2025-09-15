@@ -17,7 +17,18 @@ const BlogPosts = () => {
         const fetchArticles = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/articles?fields[0]=title&fields[1]=description&fields[2]=documentId&fields[3]=redirect&populate=*&sort=createdAt:desc&pagination[page]=${currentPage}&pagination[pageSize]=3`);
+                const apiUrl = `${process.env.REACT_APP_API_URL}/api/articles?fields[0]=title&fields[1]=description&fields[2]=documentId&fields[3]=redirect&populate=*&sort=createdAt:desc&pagination[page]=${currentPage}&pagination[pageSize]=3`;
+                const apiToken = process.env.REACT_APP_API_TOKEN || '';
+                if (!apiToken) {
+                    console.warn('REACT_APP_API_TOKEN is not set. Requests will be sent without Authorization header.');
+                }
+
+                const response = await axios.get(apiUrl, {
+                    headers: {
+                        Authorization: `bearer ${apiToken}`,
+                    },
+                });
+
                 setArticles(response.data.data);
                 setPagination(response.data.meta.pagination);
                 setTotalPages(response.data.meta.pagination.pageCount);
