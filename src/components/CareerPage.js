@@ -23,7 +23,16 @@ const CareerPage = () => {
         return (
                 <div>
                         <Navbar />
-                        <Hero background={bg} />
+                                                <Hero
+                                                        background={bg}
+                                                        heading={(
+                                                                <>
+                                                                        <span className="accent">Opportunities</span> <span className="light">At</span><br />
+                                                                        <span className="company">AGS Green</span>
+                                                                </>
+                                                        )}
+                                                        text={"We believe that our most valuable resource is our people. As we continue to expand our mission to bring sustainable solar energy to every corner of India, we are seeking talented and dedicated individuals to join our team."}
+                                                />
                         <PageCard heading={"Our Opportunities"} content={content} theme={'blue'} />
                         <CareerText />
                         <JobList />

@@ -25,7 +25,6 @@ const BlogPosts = () => {
 
                 const response = await axios.get(apiUrl, {
                     headers: {
-                        Authorization: `bearer ${apiToken}`,
                     },
                 });
 

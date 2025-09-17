@@ -1,0 +1,48 @@
+/* Landing page styles */
+.landing-page {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Landing-page specific navbar wrapper. Keeps Navbar.js and Navbar.css unchanged while
+	 allowing the navbar to be hidden initially and revealed once the hero is scrolled.
+	 Uses the existing `.navbar` class names from Navbar.css. */
+.landing-navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	z-index: 1000;
+	pointer-events: none; /* disable interactions when hidden */
+}
+
+.landing-navbar .navbar {
+	width: 100%;
+	transform: translateY(-12px) scale(0.995);
+	opacity: 0;
+	transition: transform 280ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
+	pointer-events: none; /* will be enabled when shown */
+	box-shadow: none; /* avoid early shadow when hidden */
+	/* ensure full width layout — Navbar.css controls internal padding and grid */
+	justify-self: stretch;
+}
+
+
+.landing-navbar.show {
+	pointer-events: auto; /* allow interactions when container is shown */
+}
+
+.landing-navbar.show .navbar {
+	transform: translateY(0) scale(1);
+	opacity: 1;
+	pointer-events: auto;
+	box-shadow: 0 8px 20px rgba(4,102,255,0.08);
+}
+
+@media (max-width: 768px) {
+	.landing-navbar .navbar { padding: 12px 20px; }
+	.landing-navbar.show + div { padding-top: 72px; }
+}
+
