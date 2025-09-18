@@ -176,7 +176,7 @@
     transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
     max-width: 100%;
     font-size: 1.2rem; 
-    width: 95%;
+    width: 90%;
     margin: 0 auto; /* center */
     display: block; /* allow width and centering */
     padding: 1rem 0.75rem; /* balanced once width set */
