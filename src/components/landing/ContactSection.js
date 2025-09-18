@@ -21,7 +21,7 @@ const ContactSection = () => {
             </div>
             <section className="contact-section">
                 <div className="contact-container">
-                    <form className="contact-form" onSubmit={handleSubmit}>
+                    <form className="contact-form" onSubmit={handleSubmit} netlify>
                         <label className="field-label">Name <span className="required">*</span></label>
                         <input name="name" type="text" className="text-input" placeholder="Text" required />
 

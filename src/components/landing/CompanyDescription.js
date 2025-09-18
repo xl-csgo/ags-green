@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import './CompanyDescription.css';
 import Rhombus from '../../assets/rhombus.svg';
 import { gsap } from 'gsap';
@@ -8,7 +9,8 @@ import SplitText from 'gsap/SplitText';
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 
-const CompanyDescription = () => {
+
+const CompanyDescription = ({ text, children }) => {
   const pRef = useRef(null);
   const splitInstance = useRef(null);
 
@@ -110,7 +112,9 @@ const CompanyDescription = () => {
     <div className="company-description">
       <img src={Rhombus} alt="rhombus" className="rhombus" />
       <p ref={pRef} className="split">
-        We are AGS Green, dedicated to advancing solar energy solutions in India. We specialize in solar rooftops, ground mounted solar projects, innovative solutions for farmers and comprehensive operations and maintenance of solar installations.
+        {children ? children : (text ? text : (
+          `We are AGS Green, dedicated to advancing solar energy solutions in India. We specialize in solar rooftops, ground mounted solar projects, innovative solutions for farmers and comprehensive operations and maintenance of solar installations.`
+        ))}
       </p>
       <img src={Rhombus} alt="rhombus" className="rhombus" />
     </div>
@@ -118,3 +122,13 @@ const CompanyDescription = () => {
 };
 
 export default CompanyDescription;
+
+CompanyDescription.propTypes = {
+  text: PropTypes.string,
+  children: PropTypes.node,
+};
+
+CompanyDescription.defaultProps = {
+  text: null,
+  children: null,
+};
