@@ -43,6 +43,6 @@
 
 @media (max-width: 768px) {
 	.landing-navbar .navbar { padding: 12px 20px; }
-	.landing-navbar.show + div { padding-top: 72px; }
+	/* .landing-navbar.show + div { padding-top: 72px; } */
 }
 

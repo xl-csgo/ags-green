@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import Hero from './career/CareerHero';
 const ArticleDetail = () => {
     const { id } = useParams();
     const [article, setArticle] = useState([]);
@@ -25,10 +24,11 @@ const ArticleDetail = () => {
         return <div>Loading...</div>;
       }      
     return ( 
+      <div>
         <div className="article-content">
-          <Hero />
             <BlocksRenderer content={article} />
         </div>
+      </div>
      );
 }
  
