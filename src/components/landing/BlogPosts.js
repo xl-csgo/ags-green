@@ -11,7 +11,6 @@ const BlogPosts = () => {
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [pagination, setPagination] = useState({});
 
     useEffect(() => {
         const fetchArticles = async () => {
@@ -29,7 +28,6 @@ const BlogPosts = () => {
                 });
 
                 setArticles(response.data.data);
-                setPagination(response.data.meta.pagination);
                 setTotalPages(response.data.meta.pagination.pageCount);
                 setLoading(false);
             } catch (error) {

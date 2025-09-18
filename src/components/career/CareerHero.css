@@ -65,3 +65,43 @@
   font-weight: 450;
   max-width: 440px;
 }
+
+.career-hero-bottom {
+  display: none;
+}
+
+@media (max-width:768px) {
+  .career-hero {
+    height: 40vh;
+    min-height: 0;
+    max-height: none;
+    width: 90vw;
+    padding: 0;
+    margin: 0 5vw 12px 5vw;
+  }
+  .career-hero-inner {
+    flex-direction: row;
+    align-items: left;
+    justify-content: none;
+    padding: 5vw;
+    gap: 0;
+  }
+  .career-hero-title { 
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1.05;
+    font-weight: 500;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+  .career-hero-right { 
+    display: none;
+  }
+  .career-hero-bottom {
+    display: block;
+    padding-left: 7.5vw;
+    padding-right: 7.5vw;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+}

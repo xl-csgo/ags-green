@@ -32,6 +32,7 @@ const CareerPage = () => {
                                                                 </>
                                                         )}
                                                         text={"We believe that our most valuable resource is our people. As we continue to expand our mission to bring sustainable solar energy to every corner of India, we are seeking talented and dedicated individuals to join our team."}
+                                                        bottomStyle={{ display: 'none' }}
                                                 />
                         <PageCard heading={"Our Opportunities"} content={content} theme={'blue'} />
                         <CareerText />

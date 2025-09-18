@@ -2,8 +2,11 @@ import React from 'react';
 import './CareerHero.css';
 
 // background: image url import passed in
-const CareerHero = ({ background, heading, text }) => {
+// Accept an optional `bottomStyle` prop so parents can override styles
+// (useful to hide the bottom block even when CSS media queries show it)
+const CareerHero = ({ background, heading, text, bottomStyle }) => {
   return (
+    <div>
     <section
       className="career-hero"
       style={background ? { backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${background})` } : undefined}
@@ -32,6 +35,14 @@ const CareerHero = ({ background, heading, text }) => {
         </div>
       </div>
     </section>
+  <div className="career-hero-bottom" {...(bottomStyle ? { style: bottomStyle } : {})}>
+          <p id="career-hero-bottom-text" className="career-hero-bottom-text">
+            {text ? text : (
+              `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla est sapien, eget blandit libero semper sed. Etiam a lobortis sem, vitae fringilla.`
+            )}
+          </p>
+      </div>
+    </div>
   );
 };
 
