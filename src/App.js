@@ -2,7 +2,7 @@ import LandingPage from "./components/LandingPage";
 import CareerPage from "./components/CareerPage";
 import JobApplicationPage from "./components/JobApplicationPage";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ArticleDetail from "./components/landing/ArticleDetail";
+import ArticleDetail from "./components/ArticleDetail";
 import AboutPage from "./components/AboutPage";
 
 function App() {

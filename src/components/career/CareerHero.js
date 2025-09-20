@@ -9,7 +9,7 @@ const CareerHero = ({ background, heading, text, bottomStyle }) => {
     <div>
     <section
       className="career-hero"
-      style={background ? { backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${background})` } : undefined}
+      style={background ? { backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${background})` } : undefined}
       aria-labelledby="career-hero-heading"
     >
       <div className="career-hero-inner">
