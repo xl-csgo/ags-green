@@ -85,7 +85,7 @@ const Calculator = () => {
     <div className="calculator-section">
       <div className="calculator-header">
         <h2 className="calculator-title">
-          ☀️ Solar PV <span className="calculator-highlight">Calculator</span>
+          Solar PV <span className="calculator-highlight">Calculator</span>
         </h2>
         <p className="calculator-subtitle">
           Roof-Top Solar PV Calculator for Residential Consumers

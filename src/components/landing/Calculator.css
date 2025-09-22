@@ -24,6 +24,7 @@
 
 .calculator-highlight {
   color: #1bcb1b;
+  display: inline-block;
 }
 
 .calculator-subtitle {
