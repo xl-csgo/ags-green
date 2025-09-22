@@ -2,16 +2,6 @@ import React from 'react'
 import './ContactSection.css'
 
 const ContactSection = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        // lightweight client-side handling for now
-        const form = new FormData(e.target)
-        const data = Object.fromEntries(form.entries())
-        // eslint-disable-next-line no-console
-        console.log('Contact form submitted', data)
-        // reset form
-        e.target.reset()
-    }
 
     return (
         <div id='contact'>
@@ -21,7 +11,7 @@ const ContactSection = () => {
             </div>
             <section className="contact-section">
                 <div className="contact-container">
-                    <form className="contact-form" onSubmit={handleSubmit} netlify>
+                    <form className="contact-form" netlify>
                         <label className="field-label">Name <span className="required">*</span></label>
                         <input name="name" type="text" className="text-input" placeholder="Text" required />
 
