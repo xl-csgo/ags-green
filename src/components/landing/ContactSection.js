@@ -2,7 +2,7 @@ import React from 'react'
 import './ContactSection.css'
 
 const ContactSection = () => {
-
+    const accessKey = `${process.env.REACT_APP_WEB3FORMS_ACCESS_KEY || ''}`;
     return (
         <div id='contact'>
             <div className='contact-head'>
@@ -11,7 +11,8 @@ const ContactSection = () => {
             </div>
             <section className="contact-section">
                 <div className="contact-container">
-                    <form className="contact-form" netlify>
+                    <form className="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value={accessKey} />
                         <label className="field-label">Name <span className="required">*</span></label>
                         <input name="name" type="text" className="text-input" placeholder="Text" required />
 
