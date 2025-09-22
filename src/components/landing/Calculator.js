@@ -2,45 +2,82 @@ import React, { useState } from 'react';
 import './Calculator.css';
 
 const Calculator = () => {
+  // Assumptions / reference values
+  const COST_PER_KW = 60000; // ₹/kW
+  const KWH_PER_KW_PER_MONTH = 122; // kWh per kW per month
+  const TARIFF_PER_KWH = 5.5; // ₹/kWh
+  const EMISSION_FACTOR_KG_PER_KWH = 0.82; // kg CO₂ per kWh
+  const KG_CO2_PER_TREE_PER_YEAR = 22; // kg CO₂ per tree per year
+  const AREA_PER_KW_SQFT = 100; // sqft per kW
+  // Subsidy assumptions (kept from earlier UI)
+  const CENTRAL_SUBSIDY_RATE = 0.5; // 50%
+  const CENTRAL_SUBSIDY_CAP = 78000; // ₹ cap
+  const STATE_SUBSIDY_RATE = 0.25; // 25%
+  const STATE_SUBSIDY_CAP = 30000; // ₹ cap
+
+  function roundToOneDecimal(n) {
+    return Math.round((Number.isFinite(n) ? n : 0) * 10) / 10;
+  }
+
+  function computeSuggestedCapacity(load, areaSqft) {
+    const byLoad = Math.max(0, Number(load) || 0);
+    const byArea = Math.max(0, (Number(areaSqft) || 0) / AREA_PER_KW_SQFT);
+    return roundToOneDecimal(Math.min(byLoad, byArea));
+  }
+
+  function computeResults(capacityKw) {
+    const cap = Math.max(0, Number(capacityKw) || 0);
+    const projectCost = cap * COST_PER_KW;
+  const centralSubsidy = Math.min(projectCost * CENTRAL_SUBSIDY_RATE, CENTRAL_SUBSIDY_CAP);
+  const stateSubsidy = Math.min(projectCost * STATE_SUBSIDY_RATE, STATE_SUBSIDY_CAP);
+    const consumerInvestment = Math.max(0, projectCost - centralSubsidy - stateSubsidy);
+    const monthlyGeneration = cap * KWH_PER_KW_PER_MONTH;
+    const monthlySavings = monthlyGeneration * TARIFF_PER_KWH;
+    const paybackPeriod = monthlySavings > 0 ? Number((consumerInvestment / (monthlySavings * 12)).toFixed(1)) : 0;
+
+    const annualCO2kg = monthlyGeneration * 12 * EMISSION_FACTOR_KG_PER_KWH;
+    const annualCO2Tonnes = annualCO2kg / 1000;
+    const treesPerYear = annualCO2kg / KG_CO2_PER_TREE_PER_YEAR;
+
+    return {
+      projectCost,
+      centralSubsidy,
+      stateSubsidy,
+      consumerInvestment,
+      monthlyGeneration,
+      monthlySavings,
+      paybackPeriod,
+      annualCO2Tonnes,
+      treesPerYear
+    };
+  }
+
   const [formData, setFormData] = useState({
     load: 2,
     area: 100,
     connection: 'Individual',
-    capacity: 1.0
+    capacity: roundToOneDecimal(computeSuggestedCapacity(2, 100))
   });
 
-  const [results, setResults] = useState({
-    projectCost: 60000,
-    centralSubsidy: 30000,
-    stateSubsidy: 15000,
-    consumerInvestment: 15000,
-    monthlyGeneration: 122,
-    monthlySavings: 671,
-    paybackPeriod: 2.0,
-    co2Reduction: 17
-  });
+  const [results, setResults] = useState(() => computeResults(computeSuggestedCapacity(2, 100)));
 
-  const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-    
-    // Simple calculation logic (you can make this more sophisticated)
-    const baseProjectCost = value * 30000; // ₹30k per kW
-    const centralSub = baseProjectCost * 0.5; // 50% central subsidy
-    const stateSub = Math.min(baseProjectCost * 0.25, 15000); // 25% or max 15k
-    const investment = baseProjectCost - centralSub - stateSub;
-    
-    setResults({
-      projectCost: baseProjectCost,
-      centralSubsidy: centralSub,
-      stateSubsidy: stateSub,
-      consumerInvestment: investment,
-      monthlyGeneration: value * 122, // 122 units per kW
-      monthlySavings: value * 335, // ₹335 savings per kW
-      paybackPeriod: (investment / (value * 335 * 12)).toFixed(1),
-      co2Reduction: value * 17 // 17 tonnes per kW over 25 years
+  const onLoadChange = (val) => {
+    const load = Math.max(0, parseFloat(val) || 0);
+    setFormData(prev => {
+      const capacity = computeSuggestedCapacity(load, prev.area);
+      const next = { ...prev, load, capacity };
+      setResults(computeResults(capacity));
+      return next;
+    });
+  };
+
+  const onAreaChange = (val) => {
+    const area = Math.max(0, parseFloat(val) || 0);
+    setFormData(prev => {
+      const capacity = computeSuggestedCapacity(prev.load, area);
+      const next = { ...prev, area, capacity };
+      setResults(computeResults(capacity));
+      return next;
     });
   };
 
@@ -68,8 +105,9 @@ const Calculator = () => {
               <label>Sanctioned Load (kW) *</label>
               <input 
                 type="number" 
+                min="0"
                 value={formData.load}
-                onChange={(e) => handleInputChange('load', parseFloat(e.target.value) || 0)}
+                onChange={(e) => onLoadChange(e.target.value)}
                 className="calculator-input"
               />
             </div>
@@ -78,13 +116,14 @@ const Calculator = () => {
               <label>Shadow Free Area (Sq.feet)</label>
               <input 
                 type="number" 
+                min="0"
                 value={formData.area}
-                onChange={(e) => setFormData(prev => ({...prev, area: parseFloat(e.target.value) || 0}))}
+                onChange={(e) => onAreaChange(e.target.value)}
                 className="calculator-input"
               />
             </div>
             
-            <div className="form-group">
+            {/* <div className="form-group">
               <label>Connection Type *</label>
               <select 
                 value={formData.connection}
@@ -95,7 +134,7 @@ const Calculator = () => {
                 <option value="Commercial">Commercial</option>
                 <option value="Industrial">Industrial</option>
               </select>
-            </div>
+            </div> */}
             
             <div className="form-group">
               <label>Suggested Solar Capacity (kW)</label>
@@ -103,9 +142,10 @@ const Calculator = () => {
                 type="number" 
                 step="0.1"
                 value={formData.capacity}
-                onChange={(e) => handleInputChange('capacity', parseFloat(e.target.value) || 0)}
                 className="calculator-input"
+                readOnly
               />
+              <small style={{opacity: 0.8}}>Limited by sanctioned load and shadow-free area (1 kW per 100 sqft)</small>
             </div>
           </div>
         </div>
@@ -149,12 +189,12 @@ const Calculator = () => {
           
           <div className="savings-metrics">
             <div className="metric-item">
-              <span className="metric-value">{results.monthlyGeneration}</span>
+              <span className="metric-value">{Math.round(results.monthlyGeneration)}</span>
               <span className="metric-label">kWh/Month Generation</span>
             </div>
             
             <div className="metric-item">
-              <span className="metric-value">₹{results.monthlySavings}</span>
+              <span className="metric-value">₹{Math.round(results.monthlySavings).toLocaleString()}</span>
               <span className="metric-label">Monthly Savings</span>
             </div>
             
@@ -166,8 +206,10 @@ const Calculator = () => {
             <div className="environmental-impact">
               <h4>Environmental Impact</h4>
               <p>
-                <strong>{results.co2Reduction} tonnes</strong> CO₂ reduction equivalent to planting 
-                <strong> {Math.round(results.co2Reduction * 46)} mature trees</strong>
+                Annual CO₂ reduction: <strong>{results.annualCO2Tonnes.toFixed(2)} tonnes</strong>
+              </p>
+              <p>
+                Equivalent to planting <strong>{Math.round(results.treesPerYear).toLocaleString()} trees/year</strong>
               </p>
             </div>
           </div>
@@ -178,10 +220,11 @@ const Calculator = () => {
         <div className="calculation-notes">
           <h4>📊 Calculation Assumptions</h4>
           <ul>
-            <li>• Solar panel cost - ₹60,000/kW</li>
+            <li>• Tentative solar cost - ₹60,000/kW</li>
             <li>• Energy charges - ₹5.5/kWh</li>
-            <li>• Emission factor - 0.82kg/kWh</li>
-            <li>• 1 mature tree absorbs approx 22 kg of CO₂/annum</li>
+            <li>• Emission factor - 0.82 kg CO₂/kWh</li>
+            <li>• 1 matured tree absorbs ≈ 22 kg CO₂/year</li>
+            <li>• Tentative shadow-free area required - 1 kW per 100 sqft</li>
           </ul>
         </div>
       </div>
