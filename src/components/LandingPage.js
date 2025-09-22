@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import HeroSection from './landing/HeroSection';
 import Offerings from './landing/Offerings';
+import Calculator from './landing/Calculator';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import bg from '../assets/bg.png';
 import CompanyDescription from './landing/CompanyDescription';
@@ -56,6 +57,7 @@ const LandingPage = () => {
 
 			<CompanyDescription />
 			<Offerings />
+			<Calculator />
 			<BlogPosts />
 			<ContactSection />
 			<Footer />

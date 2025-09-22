@@ -1,0 +1,378 @@
+.calculator-section {
+  width: 100%;
+  padding: 6vh 2rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calculator-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 600px;
+}
+
+.calculator-title {
+  font-size: 3.5rem;
+  line-height: 1.15;
+  margin: 0 0 1rem 0;
+  font-weight: 650;
+  color: #111;
+  word-spacing: 0.1rem;
+}
+
+.calculator-highlight {
+  color: #1bcb1b;
+}
+
+.calculator-subtitle {
+  color: #666;
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.calculator-cards-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 3rem;
+}
+
+.calculator-card {
+  flex: 1;
+  min-width: 320px;
+  max-width: 380px;
+  min-height: 100%;
+  border-radius: 16px;
+  padding: 2rem;
+  box-sizing: border-box;
+  background: #f7fbff;
+  box-shadow: 0 8px 20px rgba(16, 24, 40, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calculator-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.calculator-card-icon {
+  font-size: 1.5rem;
+}
+
+.calculator-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #07204a;
+  margin: 0;
+}
+
+/* Card themes with dotted borders */
+.calculator-card--blue {
+  border-top: 3px dashed rgba(21,101,192,0.85);
+  border-left: 3px dashed rgba(21,101,192,0.85);
+  border-right: 0;
+  border-bottom: 0;
+  background: linear-gradient(180deg, #F5FBFF 0%, #F7FDFF 100%);
+}
+
+.calculator-card--blue .calculator-card-icon { 
+  color: #0366d6; 
+}
+
+.calculator-card--orange {
+  border-top: 3px dashed rgba(255,154,36,0.9);
+  border-left: 3px dashed rgba(255,154,36,0.9);
+  border-right: 0;
+  border-bottom: 0;
+  background: linear-gradient(180deg, #FFF7F0 0%, #FFFCF6 100%);
+}
+
+.calculator-card--orange .calculator-card-icon { 
+  color: #ff9a24; 
+}
+
+.calculator-card--green {
+  border-top: 3px dashed rgba(27,203,27,0.85);
+  border-left: 3px dashed rgba(27,203,27,0.85);
+  border-right: 0;
+  border-bottom: 0;
+  background: linear-gradient(180deg, #F0FFF4 0%, #F7FFF9 100%);
+}
+
+.calculator-card--green .calculator-card-icon { 
+  color: #1bcb1b; 
+}
+
+/* Form styles */
+.calculator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.calculator-input,
+.calculator-select {
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background: white;
+}
+
+.calculator-input:focus,
+.calculator-select:focus {
+  outline: none;
+  border-color: #0366d6;
+  box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.1);
+}
+
+/* Cost breakdown styles */
+.cost-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cost-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+}
+
+.cost-item--highlight {
+  background: rgba(255, 154, 36, 0.1);
+  border: 2px solid rgba(255, 154, 36, 0.3);
+}
+
+.cost-label {
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.cost-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.cost-value--primary { color: #3b82f6; }
+.cost-value--success { color: #10b981; }
+.cost-value--info { color: #8b5cf6; }
+.cost-value--highlight { 
+  color: #ff9a24; 
+  font-size: 1.2rem;
+}
+
+/* Savings metrics styles */
+.savings-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1bcb1b;
+  margin-bottom: 0.25rem;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.environmental-impact {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(27, 203, 27, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(27, 203, 27, 0.2);
+}
+
+.environmental-impact h4 {
+  font-size: 1rem;
+  color: #1bcb1b;
+  margin: 0 0 0.5rem 0;
+}
+
+.environmental-impact p {
+  font-size: 0.9rem;
+  color: #374151;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Footer styles */
+.calculator-footer {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 2rem;
+}
+
+.calculation-notes {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  border-left: 4px solid #1bcb1b;
+}
+
+.calculation-notes h4 {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 0 0 1rem 0;
+}
+
+.calculation-notes ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.calculation-notes li {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .calculator-section {
+    padding: 4vh 1rem;
+  }
+
+  .calculator-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .calculator-title {
+    font-size: 2.2rem;
+  }
+
+  .calculator-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .calculator-cards-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .calculator-card {
+    min-width: 100%;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .calculator-card-title {
+    font-size: 1.1rem;
+  }
+
+  .calculator-card-icon {
+    font-size: 1.3rem;
+  }
+
+  .cost-item {
+    padding: 0.6rem;
+  }
+
+  .cost-label {
+    font-size: 0.85rem;
+  }
+
+  .cost-value {
+    font-size: 1rem;
+  }
+
+  .cost-value--highlight {
+    font-size: 1.1rem;
+  }
+
+  .metric-item {
+    padding: 0.75rem;
+  }
+
+  .metric-value {
+    font-size: 1.3rem;
+  }
+
+  .calculation-notes {
+    padding: 1.5rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .calculator-section {
+    padding: 3vh 0.5rem;
+  }
+
+  .calculator-title {
+    font-size: 1.8rem;
+  }
+
+  .calculator-subtitle {
+    font-size: 1rem;
+  }
+
+  .calculator-card {
+    padding: 1.2rem;
+  }
+
+  .calculator-input,
+  .calculator-select {
+    padding: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .calculation-notes {
+    padding: 1.2rem;
+  }
+
+  .calculation-notes h4 {
+    font-size: 1rem;
+  }
+
+  .calculation-notes li {
+    font-size: 0.85rem;
+  }
+}
