@@ -25,6 +25,7 @@ const AboutPage = () => {
             <Nav />
             <Hero background={bg} heading={heading} text={text} bottomStyle={bottomStyle} />
             <Desc text={desc_text} />
+            <TeamSection />
             <PageCard
                 heading="Our Mission"
                 content={
@@ -55,8 +56,6 @@ const AboutPage = () => {
                 }
                 theme="orange"
             />
-            
-            <TeamSection />
             
             <Footer />
         </div>

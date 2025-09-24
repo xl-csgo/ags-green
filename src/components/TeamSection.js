@@ -1,33 +1,33 @@
 import React from 'react';
 import './TeamSection.css';
+import team1 from '../assets/shalini_malik.jpeg';
+import team2 from '../assets/gagan_singh_mokha.jpeg';
+import team3 from '../assets/mohit_shukla.jpeg';
 
 const TeamSection = () => {
   // Placeholder team members data
   const teamMembers = [
     {
       id: 1,
-      name: 'Name',
-      designation: 'Designation',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla est sapien, eget blandit libero semper sed. Etiam'
+      name: 'Shalini Malik',
+      designation: 'Director',
+      description: 'A Company Secretary by Profession, Governance, Risk Compliance Professional with rich experience from Solar Module manufacturing and Renewable Industry.',
+      image: team1
     },
     {
       id: 2,
-      name: 'Name',
-      designation: 'Designation',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla est sapien, eget blandit libero semper sed. Etiam'
+      name: 'Gagan Singh Mokha',
+      designation: 'Director',
+      description: 'Experienced professional with a proven track record in the financial services and capital markets sectors. Mr. Mokha has rich experience of working in Renewable Sector.',
+      image: team2
     },
     {
       id: 3,
-      name: 'Name',
-      designation: 'Designation',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla est sapien, eget blandit libero semper sed. Etiam'
+      name: 'Mohit Shukla',
+      designation: 'Consultant',
+      description: 'A dedicated SME Professional with 31 years of experience in Project Execution related to Fire Protection & Renewable Resource Industry.',
+      image: team3
     },
-    {
-      id: 4,
-      name: 'Name',
-      designation: 'Designation',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla est sapien, eget blandit libero semper sed. Etiam'
-    }
   ];
 
   return (
@@ -39,7 +39,7 @@ const TeamSection = () => {
             <span className="team-card__arrow" aria-hidden>↗</span>
           </div>
           <p className="team-card__description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla est sapien, eget blandit libero semper sed. Etiam et lobortis sem, vitae fringilla massa.
+            Meet the passionate individuals driving our mission forward with expertise, experience, and a passion for clean energy.
           </p>
         </div>
 
@@ -49,12 +49,17 @@ const TeamSection = () => {
           <div className="team-grid">
             {teamMembers.map((member) => (
               <div key={member.id} className="team-member">
-                <div className="team-member__image">
-                  {/* Placeholder image with pattern */}
-                  <div className="team-member__placeholder">
-                    <div className="placeholder-pattern"></div>
-                  </div>
-                  
+                <div
+                  className={`team-member__image ${member.image ? 'has-photo' : ''}`}
+                  style={member.image ? { backgroundImage: `url(${member.image})` } : {}}
+                  aria-label={member.name}
+                >
+                  {/* If no image, show placeholder pattern */}
+                  {!member.image && (
+                    <div className="team-member__placeholder">
+                      <div className="placeholder-pattern"></div>
+                    </div>
+                  )}
                   {/* Hover overlay with description */}
                   <div className="team-member__overlay">
                     <div className="team-member__description">
