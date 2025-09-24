@@ -4,6 +4,7 @@ import JobApplicationPage from "./components/JobApplicationPage";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ArticleDetail from "./components/ArticleDetail";
 import AboutPage from "./components/AboutPage";
+import AdminPage from "./components/AdminPage";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
       <Route path="/article/:id" element={<ArticleDetail />} />
       <Route path="/apply/:job_id" element={<JobApplicationPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path='/admin' element={<AdminPage />}/>
       </Routes>
-    </Router>
+      </Router>
     </div>
   );
 }
