@@ -1,9 +1,11 @@
 .page-card {
-  width: 85vw;
+  width: 100%;
+  max-width: 85vw;
   margin: 24px auto;
   padding: 48px 32px;
   border-radius: 20px;
   background: #f6fbff; /* light neutral default */
+  box-sizing: border-box;
 }
 
 .page-card__inner {
@@ -83,6 +85,11 @@
 }
 
 @media (max-width: 800px) {
+  .page-card {
+    max-width: calc(100vw - 2rem);
+    margin: 24px 1rem;
+    padding: 32px 24px;
+  }
   .page-card__inner { flex-direction: column; align-items: flex-start; }
   .page-card__heading { flex: none; align-items: center; }
   .page-card__title { font-size: 36px; }

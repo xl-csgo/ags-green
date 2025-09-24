@@ -6,7 +6,8 @@
 	border-radius: 18px;
 	background: #fff;
 	box-sizing: border-box;
-	width: 80vw;
+	width: 100%;
+	max-width: 80vw;
 	height: 25vh;
 	margin: 18px auto;
 	padding: 0;
@@ -100,6 +101,8 @@
 		position: relative;
 		min-height: 240px; /* fixed visual height for overlay card */
 		height: auto;
+		max-width: calc(100vw - 2rem);
+		margin: 18px 1rem;
 	}
 
 	.blog-card-link {

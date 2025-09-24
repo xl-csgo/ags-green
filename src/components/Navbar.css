@@ -165,7 +165,7 @@
 	.mobile-sidenav {
 		position: fixed;
 		inset: 0; /* top:0; right:0; bottom:0; left:0 */
-		width: 100vw;
+		width: 100%;
 		height: 100vh;
 		z-index: 9999;
 		background: rgba(0,0,0,0.45);
@@ -186,7 +186,7 @@
 	.mobile-sidenav-panel {
 		background: #0b0b0b;
 		color: #fff;
-		width: 100vw;
+		width: 100%;
 		max-width: 420px;
 		height: 100%;
 		transform: translateX(100%);
@@ -196,7 +196,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start; /* start so we can nudge content down with padding */
-		padding: 0px 5vw 5vw; /* increase top padding so links are higher */
+		padding: 0 20px 20px; /* use fixed px values instead of vw */
 	}
 
 	.mobile-sidenav.open .mobile-sidenav-panel {

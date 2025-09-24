@@ -3,6 +3,7 @@ import Nav from './Navbar';
 import Hero from './career/CareerHero';
 import Desc from './landing/CompanyDescription';
 import PageCard from './PageCard';
+import TeamSection from './TeamSection';
 import bg from '../assets/bg.png';
 import Footer from './footer';
 
@@ -54,6 +55,9 @@ const AboutPage = () => {
                 }
                 theme="orange"
             />
+            
+            <TeamSection />
+            
             <Footer />
         </div>
     );

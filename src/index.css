@@ -1,5 +1,5 @@
 html, body{
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
 }
 @font-face {
@@ -10,9 +10,14 @@ html, body{
   font-display: swap;
 }
 *{
-
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* Prevent any element from causing horizontal overflow */
+* {
+  max-width: 100%;
 }
 html{
   overflow-x: hidden;

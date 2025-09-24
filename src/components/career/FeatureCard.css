@@ -1,6 +1,6 @@
 .feature-card {
   width: 30vw; /* target width requested */
-  min-width: 260px;
+  min-width: 240px;
   max-width: 420px;
   border-radius: 14px;
   padding: 28px 28px 36px 28px;
