@@ -177,7 +177,7 @@ const Calculator = () => {
               <span className="cost-label">Consumer Investment</span>
               <span className="cost-value cost-value--highlight">₹{results.consumerInvestment.toLocaleString()}</span>
             </div>
-            <small style={{opacity: 0.8}}>*This costing is for reference purposes only and actual cost may differ according to the site requirements.</small>
+            <small style={{opacity: 0.8}}>*This costing is for reference purposes only and actual cost may vary according to the site dimensions/requirements.</small>
           </div>
         </div>
 
