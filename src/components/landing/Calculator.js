@@ -154,7 +154,7 @@ const Calculator = () => {
         <div className="calculator-card calculator-card--orange">
           <div className="calculator-card-header">
             <span className="calculator-card-icon">💰</span>
-            <h3 className="calculator-card-title">Cost Breakdown (INR)</h3>
+            <h3 className="calculator-card-title">Cost Breakdown (INR)*</h3>
           </div>
           
           <div className="cost-breakdown">
@@ -177,6 +177,7 @@ const Calculator = () => {
               <span className="cost-label">Consumer Investment</span>
               <span className="cost-value cost-value--highlight">₹{results.consumerInvestment.toLocaleString()}</span>
             </div>
+            <small style={{opacity: 0.8}}>*This costing is for reference purposes only and actual cost may differ according to the site requirements.</small>
           </div>
         </div>
 
