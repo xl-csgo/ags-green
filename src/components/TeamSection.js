@@ -8,18 +8,18 @@ const TeamSection = () => {
   // Placeholder team members data
   const teamMembers = [
     {
-      id: 1,
-      name: 'Shalini Malik',
-      designation: 'Director',
-      description: 'A Company Secretary by Profession, Governance, Risk Compliance Professional with rich experience from Solar Module manufacturing and Renewable Industry.',
-      image: team1
-    },
-    {
       id: 2,
       name: 'Gagan Singh Mokha',
-      designation: 'Director',
+      designation: 'CEO',
       description: 'Experienced professional with a proven track record in the financial services and capital markets sectors. Mr. Mokha has rich experience of working in Renewable Sector.',
       image: team2
+    },
+    {
+      id: 1,
+      name: 'Shalini Malik',
+      designation: 'COO',
+      description: 'A Company Secretary by Profession, Governance, Risk Compliance Professional with rich experience from Solar Module manufacturing and Renewable Industry.',
+      image: team1
     },
     {
       id: 3,
