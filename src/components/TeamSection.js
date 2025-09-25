@@ -30,7 +30,7 @@ const TeamSection = () => {
     },
     {
       id: 3,
-      name: 'Mohit Shukla',
+      name: 'Mohit',
       designation: 'Consultant',
       description: 'A dedicated SME Professional with 31 years of experience in Project Execution related to Fire Protection & Renewable Resource Industry.',
       image: team3
