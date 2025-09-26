@@ -8,6 +8,7 @@ import CompanyDescription from './landing/CompanyDescription';
 import BlogPosts from './landing/BlogPosts';
 import ContactSection from './landing/ContactSection';
 import './Landing.css';
+import MicroTek from './landing/MicroTek';
 import Navbar from './Navbar';
 import Footer from './footer';
 
@@ -57,6 +58,7 @@ const LandingPage = () => {
 
 			<CompanyDescription />
 			<Offerings />
+			<MicroTek />
 			<Calculator />
 			<BlogPosts />
 			<ContactSection />
