@@ -13,10 +13,10 @@ const Footer = () => {
                         <p className="footer-desc">Empowering businesses with innovative solar rooftop solutions.</p>
                             <div className="footer-socials" aria-label="social links">
                                 <a href="/" className="social-icon" aria-label="Facebook"><SiFacebook size={24} /></a>
-                                <a href="/" className="social-icon" aria-label="Twitter"><SiX size={24} /></a>
+                                <a href="http://x.com/agsgreenrenew" className="social-icon" aria-label="Twitter"><SiX size={24} /></a>
                                 <a href="/" className="social-icon" aria-label="YouTube"><SiYoutube size={24} /></a>
                                 <a href="/" className="social-icon" aria-label="Instagram"><SiInstagram size={24} /></a>
-                                <a href="/" className="social-icon" aria-label="Dribbble"><SiGmail size={24} /></a>
+                                <a href="mailto:shalini@agsgreenrenew.com" className="social-icon" aria-label="Gmail"><SiGmail size={24} /></a>
                             </div>
                     </div>
                     <div className="footer-columns">
@@ -51,14 +51,7 @@ const Footer = () => {
                             </ul> */}
                         </div>
                         <div className="footer-col">
-                            {/* <h4>Company</h4>
-                            <ul>
-                                <li><a href="/">About Us</a></li>
-                                <li><a href="/">Careers</a></li>
-                                <li><a href="/">FAQs</a></li>
-                                <li><a href="/">Teams</a></li>
-                                <li><a href="/">Contact Us</a></li>
-                            </ul> */}
+                            <a class="twitter-timeline" href="https://twitter.com/AGSGREENRENEW?ref_src=twsrc%5Etfw">Tweets by AGSGREENRENEW</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                         </div>
                     </div>
                 </div>
