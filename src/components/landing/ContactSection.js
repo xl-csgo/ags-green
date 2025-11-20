@@ -29,7 +29,7 @@ const ContactSection = () => {
 
                     <aside className="contact-info">
                         <h2 className="contact-title">Contact Us</h2>
-                        <p className="contact-line"><strong>Phone:</strong> +91 98705 12130</p>
+                        <p className="contact-line"><strong>Phone:</strong> <a href="tel:+919870512130" style={{ textDecoration: 'none' }}>+91 98705 12130</a>, <a href="tel:+919839161626" style={{ textDecoration: 'none' }}>+91 98391 61626</a>, <a href="tel:+9198882192985" style={{ textDecoration: 'none' }}>+91 88821 92985</a></p>
                         <p className="contact-line"><strong>Email:</strong> info@agsgreen.com</p>
                         <p className="contact-line"><strong>Address:</strong> Plot No. WA-05, Sector-130, Noida-201301, UP</p>
                     </aside>
