@@ -35,6 +35,13 @@ const TeamSection = () => {
       description: 'A dedicated SME Professional with 31 years of experience in Project Execution related to Fire Protection & Renewable Resource Industry.',
       image: team3
     },
+    {
+      id: 3,
+      name: 'Dhruv Pande',
+      designation: 'Advocate',
+      description: 'Legal advisor specializing in insolvency, commercial disputes, and strategic risk resolution.',
+      image: ''
+    },
   ];
 
   return (
