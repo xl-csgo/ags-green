@@ -38,7 +38,7 @@ const TeamSection = () => {
     {
       id: 3,
       name: 'Dhruv Pande',
-      designation: 'Advocate',
+      designation: 'Legal Retainer',
       description: 'Legal advisor specializing in insolvency, commercial disputes, and strategic risk resolution.',
       image: ''
     },
