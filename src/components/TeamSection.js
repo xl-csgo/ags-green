@@ -3,7 +3,7 @@ import './TeamSection.css';
 import team1 from '../assets/shalini_malik.jpeg';
 import team2 from '../assets/gagan_singh_mokha.jpeg';
 import team3 from '../assets/mohit_shukla.jpeg';
-import team4 from '../assets/Dhruv.jpeg';
+import team4 from '../assets/dhruv.png';
 
 const TeamSection = () => {
   // Placeholder team members data
