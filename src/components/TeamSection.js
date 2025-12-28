@@ -3,6 +3,7 @@ import './TeamSection.css';
 import team1 from '../assets/shalini_malik.jpeg';
 import team2 from '../assets/gagan_singh_mokha.jpeg';
 import team3 from '../assets/mohit_shukla.jpeg';
+import team4 from '../assets/Dhruv.jpeg';
 
 const TeamSection = () => {
   // Placeholder team members data
@@ -22,25 +23,25 @@ const TeamSection = () => {
       image: team1
     },
     {
-      id: 2,
+      id: 3,
       name: 'Ashutosh',
       designation: 'CMD',
       description: 'Mr. Ashutosh possesses an exceptional legal acumen that has been a cornerstone of his success. His ability to navigate complex legal landscapes and provide insightful advice to various entities has consistently proven invaluable. As a budding entrepreneur, He endeavors to scale up a renewable business, offering clean, renewable energy solutions.',
       image: ''
     },
     {
-      id: 3,
+      id: 4,
       name: 'Mohit',
       designation: 'Consultant',
       description: 'A dedicated SME Professional with 31 years of experience in Project Execution related to Fire Protection & Renewable Resource Industry.',
       image: team3
     },
     {
-      id: 3,
+      id: 5,
       name: 'Dhruv Pande',
-      designation: 'Legal Retainer',
-      description: 'Legal advisor specializing in insolvency, commercial disputes, and strategic risk resolution.',
-      image: ''
+      designation: 'Legal & Compliances Advisor',
+      description: 'Legal advisor specializing in compliances, commercial disputes, and strategic risk resolution.',
+      image: team4
     },
   ];
 
